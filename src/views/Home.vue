@@ -11,11 +11,11 @@
       </p>
     </tabs>
 
-    <tabs :tabs="tabs.slice(0, 2)" class="justified bottom"></tabs>
-    <tabs :tabs="tabs.slice(0, 2)" class="right"></tabs>
-    <tabs :tabs="tabs.slice(0, 2)" class="center"></tabs>
-    <tabs :tabs="tabs.slice(0, 2)" class="vertical"></tabs>
-    <tabs :tabs="tabs.slice(0, 2)" class="vertical right"></tabs>
+    <tabs :tabs="tabs.slice(0, 2)" position="bottom" align="justify"></tabs>
+    <tabs :tabs="tabs.slice(0, 2)" align="right"></tabs>
+    <tabs :tabs="tabs.slice(0, 2)" align="center"></tabs>
+    <tabs :tabs="tabs.slice(0, 2)" :vertical="true"></tabs>
+    <tabs :tabs="tabs.slice(0, 2)" :vertical="true" position="right"></tabs>
   </div>
 </template>
 

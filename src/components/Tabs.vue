@@ -1,5 +1,5 @@
 <template>
-  <div class="tabs">
+  <div :class="classNames">
     <div class="header" :style="headerStyle">
       <div
         v-for="(tab, index) in tabs"
@@ -37,6 +37,20 @@
   export default {
     name: 'tabs',
     props: {
+      vertical: {
+        type: Boolean,
+        default: false
+      },
+      position: {
+        type: String,
+        default () {
+          return this.vertical ? 'left' : 'top'
+        }
+      },
+      align: {
+        type: String,
+        default: 'left'
+      },
       tabs: {
         type: Array,
         default () {
@@ -51,7 +65,7 @@
     data () {
       return {
         activeTab: null,
-        position: 0
+        scrollPos: 0
       }
     },
     watch: {
@@ -61,6 +75,20 @@
       this.activeTab = this.validateIndex(this.active)
     },
     computed: {
+      horizontal () {
+        return !this.vertical
+      },
+      orientation () {
+        return this.vertical ? 'vertical' : 'horizontal'
+      },
+      classNames () {
+        var classes = ['tabs', this.orientation, this.position]
+
+        if (this.horizontal)
+          classes.push(this.align)
+
+        return classes
+      },
       currentTab () {
         return this.$refs.tabButtons[this.activeTab]
       },
@@ -69,7 +97,7 @@
       },
       headerStyle () {
         return {
-          left: `${this.position}px`
+          left: `${this.scrollPos}px`
         }
       }
     },
@@ -94,18 +122,18 @@
         }
       },
       setPosition () {
-        var currItem = this.currentTab
-        var offWidth = this.$el.offsetWidth
-        var position = offWidth - currItem.offsetLeft - currItem.offsetWidth
+        var currItem  = this.currentTab
+        var offWidth  = this.$el.offsetWidth
+        var scrollPos = offWidth - currItem.offsetLeft - currItem.offsetWidth
 
         if (currItem.nextSibling)
-          position = position - currItem.nextSibling.offsetWidth
+          scrollPos = scrollPos - currItem.nextSibling.offsetWidth
 
-        if (position > -2)
-          position = 0
+        if (scrollPos > -2)
+          scrollPos = 0
 
-        if (position !== this.position)
-          this.position = position
+        if (scrollPos !== this.scrollPos)
+          this.scrollPos = scrollPos
       }
     }
   }
