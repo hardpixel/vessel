@@ -1,5 +1,5 @@
 <template>
-  <div :class="classNames">
+  <div v-if="hasTabs" :class="classNames">
     <div class="header" :style="headerStyle">
       <div
         v-for="(tab, index) in tabs"
@@ -75,6 +75,9 @@
       this.activeTab = this.validateIndex(this.active)
     },
     computed: {
+      hasTabs () {
+        return this.tabs.length
+      },
       horizontal () {
         return !this.vertical
       },
