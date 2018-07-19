@@ -1,0 +1,24 @@
+.card {
+  display: grid;
+  grid-template-areas: 'image' 'title' 'content';
+  border: 1px solid $border-color;
+  margin-bottom: 1rem;
+  overflow: hidden;
+
+  .image {
+    grid-area: image;
+    display: flex;
+  }
+
+  .title, .content {
+    padding: 1rem;
+  }
+
+  .title {
+    grid-area: title;
+  }
+
+  .content {
+    grid-area: content;
+  }
+}

@@ -1,5 +1,13 @@
 <template>
   <div class="home container">
+    <h1>Cards</h1>
+
+    <card v-for="card in cards" :key="card.id" :title="card.title" :content="card.content" :image="card.image">
+      <strong slot="title" slot-scope="{ title }">
+        <i class="mdi mdi-star"></i> {{ title }}
+      </strong>
+    </card>
+
     <h1>Tabs</h1>
 
     <tabs :tabs="tabs">
@@ -24,6 +32,14 @@
     name: 'home',
     data () {
       return {
+        cards: [
+          {
+            id: 1,
+            title: 'First Card',
+            content: 'First card text content',
+            image: 'https://picsum.photos/640/380'
+          }
+        ],
         tabs: [
           {
             id: 1,
