@@ -1,7 +1,7 @@
 <template>
   <div :class="classNames">
     <div class="image">
-      <img :src="image" :alt="title">
+      <media :src="image" :alt="title"/>
     </div>
     <div class="title">
       <slot v-bind:title="title" name="title">
