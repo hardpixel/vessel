@@ -115,13 +115,15 @@
         return index
       },
       activateTab (index) {
-        var validIndex = this.validateIndex(index)
+        if (index !== this.activeTab) {
+          var validIndex = this.validateIndex(index)
 
-        if (validIndex !== this.activeTab) {
-          this.activeTab = validIndex
+          if (validIndex !== this.activeTab) {
+            this.activeTab = validIndex
 
-          this.$emit('activated', this.tabs[index])
-          this.currentTab.focus()
+            this.$emit('activated', this.tabs[index])
+            this.currentTab.focus()
+          }
         }
       },
       setPosition () {
