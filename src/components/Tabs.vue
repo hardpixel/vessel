@@ -9,12 +9,12 @@
         :key="tab.id"
         :aria-controls="`tab-${index}`"
         :class="itemClass(index, 'title')"
-        @click="activateTab(index)"
-        @keyup.enter="activateTab(index)"
-        @keyup.up="activateTab(activeTab - 1)"
-        @keyup.left="activateTab(activeTab - 1)"
-        @keyup.down="activateTab(activeTab + 1)"
-        @keyup.right="activateTab(activeTab + 1)">
+        @click.prevent="activateTab(index)"
+        @keydown.enter.prevent="activateTab(index)"
+        @keydown.up.prevent="activateTab(prevTab)"
+        @keydown.down.prevent="activateTab(nextTab)"
+        @keydown.left.prevent="activateTab(prevTab)"
+        @keydown.right.prevent="activateTab(nextTab)">
         <slot v-bind:tab="tab" name="title">
           {{ tab.title }}
         </slot>
@@ -96,6 +96,12 @@
       },
       indexMax () {
         return this.tabs.length - 1
+      },
+      prevTab () {
+        return this.activeTab - 1
+      },
+      nextTab () {
+        return this.activeTab + 1
       }
     },
     methods: {
@@ -128,7 +134,7 @@
         if (currItem.nextSibling)
           scrollPos = scrollPos - currItem.nextSibling.offsetWidth
 
-        if (scrollPos > -2)
+        if (scrollPos > -10)
           scrollPos = 0
 
         this.$refs.tabHeader.scrollLeft = Math.abs(scrollPos)
