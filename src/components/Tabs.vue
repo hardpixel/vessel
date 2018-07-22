@@ -1,6 +1,6 @@
 <template>
   <div v-if="hasTabs" :class="classNames">
-    <div class="header" :style="headerStyle">
+    <div class="header" ref="tabHeader">
       <div
         v-for="(tab, index) in tabs"
         ref="tabButtons"
@@ -64,8 +64,7 @@
     },
     data () {
       return {
-        activeTab: null,
-        scrollPos: 0
+        activeTab: null
       }
     },
     watch: {
@@ -97,11 +96,6 @@
       },
       indexMax () {
         return this.tabs.length - 1
-      },
-      headerStyle () {
-        return {
-          left: `${this.scrollPos}px`
-        }
       }
     },
     methods: {
@@ -137,8 +131,7 @@
         if (scrollPos > -2)
           scrollPos = 0
 
-        if (scrollPos !== this.scrollPos)
-          this.scrollPos = scrollPos
+        this.$refs.tabHeader.scrollLeft = Math.abs(scrollPos)
       }
     }
   }
