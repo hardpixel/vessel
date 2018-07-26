@@ -1,12 +1,14 @@
 <template>
-  <div class="home container">
+  <div class="home container padding-h">
     <h1>Cards</h1>
 
-    <card v-for="card in cards" :key="card.id" :title="card.title" :content="card.content" :image="card.image">
-      <strong slot="title" slot-scope="{ title }">
-        <i class="mdi mdi-star"></i> {{ title }}
-      </strong>
-    </card>
+    <div class="grid horizontal gap">
+      <card v-for="card in cards" :key="card.id" :title="card.title" :content="card.content" :image="card.image">
+        <strong slot="title">
+          <i :class="`mdi mdi-${card.icon}`"></i> {{ card.title }}
+        </strong>
+      </card>
+    </div>
 
     <h1>Tabs</h1>
 
@@ -19,11 +21,16 @@
       </p>
     </tabs>
 
-    <tabs :tabs="tabs.slice(0, 2)" position="bottom" align="justify"></tabs>
-    <tabs :tabs="tabs.slice(0, 2)" align="right"></tabs>
-    <tabs :tabs="tabs.slice(0, 2)" align="center"></tabs>
-    <tabs :tabs="tabs.slice(0, 2)" :vertical="true"></tabs>
-    <tabs :tabs="tabs.slice(0, 2)" :vertical="true" position="right"></tabs>
+    <div class="grid horizontal gap">
+      <tabs :tabs="tabs.slice(0, 2)" position="bottom" align="justify"></tabs>
+      <tabs :tabs="tabs.slice(0, 2)" align="right"></tabs>
+      <tabs :tabs="tabs.slice(0, 2)" align="center"></tabs>
+    </div>
+
+    <div class="grid horizontal gap">
+      <tabs :tabs="tabs.slice(0, 2)" :vertical="true"></tabs>
+      <tabs :tabs="tabs.slice(0, 2)" :vertical="true" position="right"></tabs>
+    </div>
   </div>
 </template>
 
@@ -37,7 +44,15 @@
             id: 1,
             title: 'First Card',
             content: 'First card text content',
-            image: 'https://picsum.photos/640/380'
+            image: 'https://picsum.photos/640/380',
+            icon: 'clock'
+          },
+          {
+            id: 2,
+            title: 'Second Card',
+            content: 'Second card text content',
+            image: 'https://picsum.photos/640/380',
+            icon: 'calendar'
           }
         ],
         tabs: [
