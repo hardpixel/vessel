@@ -13,6 +13,7 @@ $max-width: 68rem !default;
   > * {
     flex-grow: 1;
     flex-shrink: 1;
+    flex-basis: 1rem;
   }
 
   &.nowrap {
@@ -26,32 +27,20 @@ $max-width: 68rem !default;
   &.vertical {
     flex-direction: column;
   }
+}
 
-  &.margin {
-    margin: -.5rem;
+.grid {
+  display: grid;
 
-    > * {
-      margin: .5rem;
-    }
+  &.horizontal {
+    grid-auto-flow: column;
   }
 
-  &.margin-h {
-    margin: 0 -.5rem;
-
-    > * {
-      margin: 0 .5rem;
-    }
+  &.vertical {
+    grid-auto-flow: row;
   }
 
-  &.margin-v {
-    margin: -.5rem 0;
-
-    > * {
-      margin: .5rem 0;
-    }
-  }
-
-  &.margin-0 > * {
-    margin: 0;
+  &.gap {
+    grid-gap: 1rem;
   }
 }
