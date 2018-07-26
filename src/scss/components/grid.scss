@@ -1,4 +1,58 @@
+$max-width: 68rem !default;
+
 .container {
   margin: auto;
-  max-width: 30rem;
+  max-width: $max-width;
+}
+
+.box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  > * {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 25rem;
+  }
+
+  &.nowrap {
+    flex-wrap: nowrap;
+  }
+
+  &.horizontal {
+    flex-direction: row;
+  }
+
+  &.vertical {
+    flex-direction: column;
+  }
+
+  &.margin {
+    margin: -.5rem;
+
+    > * {
+      margin: .5rem;
+    }
+  }
+
+  &.margin-h {
+    margin: 0 -.5rem;
+
+    > * {
+      margin: 0 .5rem;
+    }
+  }
+
+  &.margin-v {
+    margin: -.5rem 0;
+
+    > * {
+      margin: .5rem 0;
+    }
+  }
+
+  &.margin-0 > * {
+    margin: 0;
+  }
 }
