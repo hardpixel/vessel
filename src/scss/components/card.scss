@@ -2,7 +2,7 @@
   display: grid;
   grid-template-areas: 'image' 'title' 'content';
   border: 1px solid $border-color;
-  margin-bottom: 1rem;
+  margin-bottom: $global-margin;
   overflow: hidden;
 
   .image {
@@ -17,7 +17,7 @@
   }
 
   .title, .content {
-    padding: 1rem;
+    padding: $global-padding;
   }
 
   .title {

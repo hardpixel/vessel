@@ -1,7 +1,7 @@
 .tabs {
   display: grid;
   border: 1px solid $border-color;
-  margin-bottom: 1rem;
+  margin-bottom: $global-margin;
   overflow: hidden;
 
   .header {
@@ -18,7 +18,7 @@
 
   .title {
     cursor: pointer;
-    padding: 1rem 2rem;
+    padding: $global-padding ($global-padding * 2);
     white-space: nowrap;
     position: relative;
   }
@@ -29,7 +29,7 @@
 
   .tab {
     display: none;
-    padding: 1rem;
+    padding: $global-padding;
 
     &.active {
       display: block;
