@@ -1,5 +1,7 @@
 import "normalize.css/normalize.css";
 
+import './directives/wrap'
+
 import Vue from 'vue'
 import App from './App.vue'
 
