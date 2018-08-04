@@ -2,13 +2,13 @@
   <div class="home container padding-h">
     <h1>Cards</h1>
 
-    <div class="grid horizontal gap">
+    <grid>
       <card v-for="card in cards" :key="card.id" :title="card.title" :content="card.content" :image="card.image">
         <strong slot="title">
           <i :class="`mdi mdi-${card.icon}`"></i> {{ card.title }}
         </strong>
       </card>
-    </div>
+    </grid>
 
     <h1>Tabs</h1>
 
@@ -21,16 +21,16 @@
       </p>
     </tabs>
 
-    <div class="grid horizontal gap">
+    <grid>
       <tabs :tabs="tabs.slice(0, 2)" position="bottom" align="justify"></tabs>
       <tabs :tabs="tabs.slice(0, 2)" align="right"></tabs>
       <tabs :tabs="tabs.slice(0, 2)" align="center"></tabs>
-    </div>
+    </grid>
 
-    <div class="grid horizontal gap">
+    <grid>
       <tabs :tabs="tabs.slice(0, 2)" :vertical="true"></tabs>
       <tabs :tabs="tabs.slice(0, 2)" :vertical="true" position="right"></tabs>
-    </div>
+    </grid>
   </div>
 </template>
 
